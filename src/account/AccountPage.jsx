@@ -10,11 +10,13 @@ export default function AccountPage() {
   const [reservations, setReservations] = useState([]);
   const [error, setError] = useState(null);
 
+  //Fetches the account data
   const syncAccount = async () => {
     const data = await getAccount(token);
     setAccount(data);
   };
 
+  //Fetches the reservations
   const syncReservations = async () => {
     const data = await getReservations(token);
     setReservations(data);
@@ -26,6 +28,10 @@ export default function AccountPage() {
     syncReservations();
   }, [token]);
 
+  //All previous errors are cleared.
+  //Tries to return a book using its ID.
+  //If successful, the reservation list is then refreshed.
+  //If unsuccessful, error message is sent.
   const tryReturn = async (reservationId) => {
     setError(null);
     try {

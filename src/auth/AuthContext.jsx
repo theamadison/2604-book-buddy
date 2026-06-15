@@ -1,7 +1,5 @@
 import { createContext, useContext, useState } from "react";
 
-// import.meta.env allows us to access environment variables,
-// which are defined in a file named .env
 const API = import.meta.env.VITE_API;
 
 const AuthContext = createContext();
@@ -9,6 +7,9 @@ const AuthContext = createContext();
 export function AuthProvider({ children }) {
   const [token, setToken] = useState();
 
+  //A new account is created with the user's selected username and password.
+  //A token is then created for that specific user.\
+  //If unsuccesful, an error message is sent.
   const register = async (credentials) => {
     const response = await fetch(API + "/users/register", {
       method: "POST",
@@ -22,6 +23,9 @@ export function AuthProvider({ children }) {
     setToken(result.token);
   };
 
+  //User must enter in the username and password for an existing account.
+  //If the username or password is incorrect or not found, an error message is sent.
+  //If the username and password is correct, a token is created and sent.
   const login = async (credentials) => {
     const response = await fetch(API + "/users/login", {
       method: "POST",

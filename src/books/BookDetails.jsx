@@ -11,6 +11,7 @@ export default function BookDetails() {
   const [book, setBook] = useState(null);
   const [error, setError] = useState(null);
 
+  //Fetches the book data by using the book's ID.
   useEffect(() => {
     const syncBook = async () => {
       const data = await getBook(id);
@@ -19,6 +20,10 @@ export default function BookDetails() {
     syncBook();
   }, [id]);
 
+  //Clears previous errors.
+  //Tries to reserve a book.
+  //If successful, sends user to account.
+  //If unsuccesful, error message is displayed.
   const tryReserve = async () => {
     setError(null);
     try {
@@ -29,6 +34,10 @@ export default function BookDetails() {
     }
   };
 
+  //The book's title, author, cover image, description of the book, and availability is displayed.
+  //A reserve button is displayed if user is logged in.
+  //If a book is already checked out, the reserve button is disabled.
+  //Error message is dispalayed if the book reservation process fails.
   if (!book) return <p>Loading...</p>;
   return (
     <article>

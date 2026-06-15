@@ -1,9 +1,8 @@
 const API = import.meta.env.VITE_API;
 
-/**
- * Fetches an array of the logged in user's reservations.
- * A valid token is required.
- */
+//Fetches an array of the logged in user's reservations.
+// A valid token is required.
+
 export async function getReservations(token) {
   try {
     const response = await fetch(API + "/reservations", {
@@ -17,10 +16,9 @@ export async function getReservations(token) {
   }
 }
 
-/**
- * Requests the API to reserve the book with the given ID.
- * A valid token is required.
- */
+//Requests the API to reserve the book with the given ID.
+//A valid token is required.
+
 export async function reserveBook(token, bookId) {
   const response = await fetch(API + "/reservations", {
     method: "POST",
@@ -36,10 +34,9 @@ export async function reserveBook(token, bookId) {
   }
 }
 
-/**
- * Requests the API to delete the reservation with the given ID.
- * A valid token is required.
- */
+//Requests the API to delete the reservation with the given ID.
+//A valid token is required.
+
 export async function returnBook(token, reservationId) {
   const response = await fetch(API + "/reservations/" + reservationId, {
     method: "DELETE",

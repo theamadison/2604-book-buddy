@@ -1,6 +1,6 @@
 const API = import.meta.env.VITE_API;
 
-/** Fetches an array of books from the API. */
+// Fetches an array of books from the API.
 export async function getBooks() {
   try {
     const response = await fetch(API + "/books");
@@ -12,7 +12,7 @@ export async function getBooks() {
   }
 }
 
-/** Fetches a book by ID from the API. */
+// Fetches a book using its ID from the API.
 export async function getBook(id) {
   try {
     const response = await fetch(API + "/books/" + id);

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getBooks } from "../api/books";
 import BookList from "./BookList";
 
+//Fetches all books
 export default function BooksPage() {
   const [books, setBooks] = useState([]);
 

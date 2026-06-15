@@ -9,6 +9,7 @@ export default function Register() {
 
   const [error, setError] = useState(null);
 
+  //Form that allows users to register a new account.
   const tryRegister = async (formData) => {
     setError(null);
     const firstname = formData.get("firstname");
